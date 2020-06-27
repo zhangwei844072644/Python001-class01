@@ -1,1 +1,45 @@
-仅仅测试一下远程仓库同步
+调试模式
+scrapy shell http://ww.baidu.com
+#scrapy shell 固定格式 后面是跟你要调试的网址
+
+创建一个scrapy项目
+scrapy startproject douban
+#scrapy startproject 固定格式    后面项目名
+之后他会有所提示
+设置起始网址
+
+setting设置
+CONCURRENT_REQUESTS = 1 #数字越小爬取速度越慢
+ROBOTSTXT_OBEY = False #不遵守爬虫协议
+
+xpath表达式
+/   #从跟节点选取
+nodenname #选取此节点的所有子节点
+//    #选取当前树的所有节点，不考虑他们的位置
+.    #选取当前节点
+..        #选取当前节点的父节点
+@           #选取属性
+*了     #匹配任何元素节点
+//*   #选取文档中的所有元素
+//title[@*]    #选取所有带属性的title元素
+|   #选取若干分支
+//book/title | //book/price  #选取book元素的所有tiltle  和 price
+
+
+官方文档  https://requests.readthedocs.io/zh_CN/latest/
+r = requests.get(url, cookies=cookies, timeout = 0.001, headers = headers)    #访问网址
+url # '网址'
+cookies  #字典型小饼干
+r.status_code  # 返回响应状态码
+timeout #响应超时后不等待
+headers #定制请求头字典
+
+响应头
+r.headers
+
+打印相应字符串
+r.text
+
+可以解析xml的lxml
+
+存储CSV文件 pandas
